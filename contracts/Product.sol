@@ -14,6 +14,14 @@ contract Product {
   mapping(uint => Item) public items;
   uint public itemCount;
 
+  function getItemCount() public view returns(uint) {
+    return itemCount;
+  }
+
+  function getItemById(uint _id) public view returns(Item memory) {
+    return items[_id];
+  }
+
   function createItem(string memory _name, string memory _description, uint _price) public {
     items[itemCount] = Item(itemCount, msg.sender, _name, _description, _price, false);
     itemCount++;
